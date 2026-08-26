@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JobGuard — Fake Job Detection</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <header class="navbar">
+
+        <div class="brand">
+            <div class="brand-icon">🛡</div>
+
+            <div>
+                <div class="brand-name">JobGuard</div>
+                <div class="brand-tagline">AI Job Safety</div>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#analyzer">Analyzer</a>
+            <a href="#how-it-works">How it works</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="badge">
+                <span class="pulse"></span>
+                AI-POWERED FRAUD DETECTION
+            </div>
+
+            <h1>
+                Don't let a fake job
+                <span>cost you.</span>
+            </h1>
+
+            <p class="hero-text">
+                Analyze suspicious job postings with machine learning
+                and discover whether they're likely to be legitimate
+                or fraudulent.
+            </p>
+
+        </section>
+
+
+        <!-- ANALYZER -->
+
+        <section class="analyzer" id="analyzer">
+
+            <div class="input-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Analyze a job posting</h2>
+
+                        <p>
+                            Paste the complete job description below.
+                        </p>
+                    </div>
+
+                    <span class="secure-label">
+                        🔒 Secure Analysis
+                    </span>
+
+                </div>
+
+
+                <textarea id="jobText"
+                    placeholder="Paste the job title, description, requirements, salary, company information, or complete job posting here..."></textarea>
+
+
+                <div class="input-footer">
+
+                    <span id="characterCount">
+                        0 characters
+                    </span>
+
+                    <div class="actions">
+
+                        <button class="example-btn" id="exampleBtn">
+                            Try Example
+                        </button>
+
+                        <button class="clear-btn" id="clearBtn">
+                            Clear
+                        </button>
+
+                        <button class="analyze-btn" id="analyzeBtn">
+                            <span id="buttonText">
+                                Analyze Job
+                            </span>
+
+                            <span id="loader" class="loader hidden"></span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <div class="result-card" id="resultCard">
+
+                <div class="result-placeholder" id="placeholder">
+
+                    <div class="placeholder-icon">
+                        ✦
+                    </div>
+
+                    <h3>Ready to analyze</h3>
+
+                    <p>
+                        Your prediction and confidence score
+                        will appear here.
+                    </p>
+
+                </div>
+
+
+                <div class="result-content hidden" id="resultContent">
+
+                    <div class="result-icon" id="resultIcon">
+                        ✓
+                    </div>
+
+                    <div class="result-label">
+                        ANALYSIS RESULT
+                    </div>
+
+                    <h2 id="prediction">
+                        REAL JOB
+                    </h2>
+
+                    <p id="resultMessage">
+                        This posting appears to be legitimate.
+                    </p>
+
+
+                    <div class="confidence-section">
+
+                        <div class="confidence-header">
+
+                            <span>
+                                Confidence
+                            </span>
+
+                            <strong id="confidenceValue">
+                                0%
+                            </strong>
+
+                        </div>
+
+                        <div class="confidence-bar">
+
+                            <div class="confidence-fill" id="confidenceFill"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-footer">
+                        <span>🤖</span>
+                        Powered by TF-IDF + XGBoost
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+
+        <section class="features" id="how-it-works">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <div>
+                    <h3>Fast Analysis</h3>
+                    <p>
+                        Get a prediction in seconds.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🧠
+                </div>
+
+                <div>
+                    <h3>ML Powered</h3>
+                    <p>
+                        Powered by an XGBoost classifier.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🎯
+                </div>
+
+                <div>
+                    <h3>Confidence Score</h3>
+                    <p>
+                        See how confident the model is.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>
+            JobGuard · Fake Job Detection · Machine Learning Project
+        </p>
+    </footer>
+
+
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>
