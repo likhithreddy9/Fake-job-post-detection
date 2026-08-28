@@ -602,6 +602,39 @@ textarea::placeholder {
     font-size: 11px;
 }
 
+.feedback {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.feedback button {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: #cbd5e1;
+    cursor: pointer;
+    padding: 6px 12px;
+}
+
+.feedback-correction {
+    align-items: center;
+    display: inline-flex;
+    gap: 8px;
+}
+
+.review-result .result-icon {
+    background: rgba(234, 179, 8, 0.12);
+    border: 1px solid rgba(234, 179, 8, 0.2);
+    color: #facc15;
+}
+
+.review-result .confidence-fill {
+    background: #eab308;
+}
+
 
 /* FEATURES */
 

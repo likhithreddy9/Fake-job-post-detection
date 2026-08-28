@@ -182,7 +182,18 @@
 
                     <div class="result-footer">
                         <span>🤖</span>
-                        Powered by TF-IDF + XGBoost
+                        Powered by word and character TF-IDF
+                    </div>
+
+                    <div class="feedback" id="feedback">
+                        <span id="feedbackMessage">Was this prediction correct?</span>
+                        <button type="button" id="feedbackYes">Yes</button>
+                        <button type="button" id="feedbackNo">No</button>
+                        <span class="feedback-correction hidden" id="feedbackCorrection">
+                            Correct label:
+                            <button type="button" id="labelFake">Fake</button>
+                            <button type="button" id="labelReal">Real</button>
+                        </span>
                     </div>
 
                 </div>
@@ -221,7 +232,7 @@
                 <div>
                     <h3>ML Powered</h3>
                     <p>
-                        Powered by an XGBoost classifier.
+                        Powered by a balanced text classifier.
                     </p>
                 </div>
 

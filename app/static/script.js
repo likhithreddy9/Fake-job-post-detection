@@ -37,6 +37,15 @@ const confidenceValue =
 const confidenceFill =
     document.getElementById("confidenceFill");
 
+const feedback = document.getElementById("feedback");
+const feedbackMessage = document.getElementById("feedbackMessage");
+const feedbackYes = document.getElementById("feedbackYes");
+const feedbackNo = document.getElementById("feedbackNo");
+const feedbackCorrection = document.getElementById("feedbackCorrection");
+const labelFake = document.getElementById("labelFake");
+const labelReal = document.getElementById("labelReal");
+let latestPrediction = null;
+
 
 /* CHARACTER COUNT */
 
@@ -99,7 +108,8 @@ clearBtn.addEventListener("click", () => {
 
     resultCard.classList.remove(
         "fake-result",
-        "real-result"
+        "real-result",
+        "review-result"
     );
 
 });
@@ -214,14 +224,30 @@ function showResult(data) {
     );
 
 
+    const isReview = data.prediction === "review";
+
     resultCard.classList.add(
-        isFake
-            ? "fake-result"
-            : "real-result"
+        isReview ? "review-result" : isFake ? "fake-result" : "real-result"
     );
+    latestPrediction = data.prediction;
+    feedback.classList.remove("hidden");
+    feedbackMessage.textContent = "Was this prediction correct?";
+    feedbackYes.classList.remove("hidden");
+    feedbackNo.classList.remove("hidden");
+    feedbackCorrection.classList.add("hidden");
 
 
-    if (isFake) {
+    if (isReview) {
+
+        resultIcon.textContent = "?";
+
+        prediction.textContent =
+            "NEEDS REVIEW";
+
+        resultMessage.textContent =
+            "The model is uncertain. Verify the company and application process before applying.";
+
+    } else if (isFake) {
 
         resultIcon.textContent = "⚠";
 
@@ -252,3 +278,27 @@ function showResult(data) {
         `${confidence}%`;
 
 }
+
+async function sendFeedback(correct, actualLabel = null) {
+    await fetch("/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            text: jobText.value.trim(),
+            prediction: latestPrediction,
+            correct: correct,
+            actual_label: actualLabel
+        })
+    });
+    feedbackMessage.textContent = "Thanks. Your feedback was saved.";
+    feedbackYes.classList.add("hidden");
+    feedbackNo.classList.add("hidden");
+    feedbackCorrection.classList.add("hidden");
+}
+
+feedbackYes.addEventListener("click", () => sendFeedback(true));
+feedbackNo.addEventListener("click", () => {
+    feedbackCorrection.classList.remove("hidden");
+});
+labelFake.addEventListener("click", () => sendFeedback(false, "fake"));
+labelReal.addEventListener("click", () => sendFeedback(false, "real"));
